@@ -9,10 +9,11 @@ public class Game {
     private class Value{
         Integer i;
         Boolean b;
-
-        private Value(Integer i,Boolean b) {
+        int u;
+        private Value(Integer i,Boolean b,int u) {
             this.b = b;
             this.i = i;
+            this.u=u;
         }
     }
     private static final String TAG = "game";
@@ -46,13 +47,13 @@ public class Game {
     public Status mechanics(Integer now) {
         Log.d(TAG, "mec ("+ memo+";"+now+")");
         Status status;
-        if (memo < 0) {
-            memo = now;
-            status = Status.MEMO;
+        if (arraytwin[now].b){
+            status = Status.OLD;
         } else if (memo.equals(now)) {
             status = Status.MEMO;
-        }else if (arraytwin[now].b){
-            status = Status.OLD;
+        }else if (memo < 0) {
+            memo = now;
+            status = Status.MEMO;
         } else if (arraytwin[memo].i.equals(arraytwin[now].i)) {
             arraytwin[memo].b=true;
             arraytwin[now].b=true;
@@ -78,8 +79,8 @@ public class Game {
         Value twin[] = new Value[n];
         for (Integer i = 0; i < n / 2; i++) {
             Log.d(TAG, "TWIN"+i.toString());
-            twin[2 * i] = new Value(i + 1,false);
-            twin[2 * i + 1] = new Value(i + 1,false);
+            twin[2 * i] = new Value(i ,false,2 * i);
+            twin[2 * i + 1] = new Value(i ,false,2 * i+1);
         }
         return twin;
     }
@@ -101,18 +102,16 @@ public class Game {
         }
     }
 
-    public void reset(){
-        memo = -1;
-        remaining = nbut/2;
-        shuffle(arraytwin);
-        for (Value j:arraytwin) {
-            j.b=false;
-        }
-    }
     public Integer getValue (Integer pos){
         Log.d(TAG, "getvalue: "+pos);
         return arraytwin[pos].i;
     }
+
+    public int getId (Integer pos){
+        Log.d(TAG, "getId: "+pos);
+        return arraytwin[pos].u;
+    }
+
     public Integer getMoves(){
         return moves;
     }
