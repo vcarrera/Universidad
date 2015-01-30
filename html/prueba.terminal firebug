@@ -1,0 +1,15 @@
+console.log("hola")
+movie={title: 'The Godfather',
+'releaseInfo': {'year': 1972, rating: 'PG'}
+};
+for (i in movie) {
+  console.log(i+":")
+  if (i == "releaseInfo"){
+    for (ii in movie[i]) {
+      console.log(ii)
+      console.log(movie[i][ii])
+    }
+  }else{
+    console.log(movie[i]);
+  }
+};
