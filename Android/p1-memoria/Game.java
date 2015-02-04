@@ -4,7 +4,6 @@ import android.util.Log;
 
 import java.util.Random;
 
-
 public class Game {
     private static final String TAG = "game";
     private Integer moves = 0;
