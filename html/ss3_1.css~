@@ -1,8 +1,36 @@
 body{background-color:blue;}
 #sandbox{
-    font: "goudy-bookletter-1911-1", "goudy-bookletter-1911-2", "Bas-kerville", "Georgia", serif;
+    font-family: "goudy-bookletter-1911-1", "goudy-bookletter-1911-2", "Bas-kerville", "Georgia", serif;
     border-style: solid;
     border-width: 1px;
     border-color: #211111;
     overflow:hidden;
- 
+    margin:40px 0 0 30px;
+    padding: 20px;
+    Width: 440px;
+    z-index: 2;
+    color: black;
+    font-size:16px;
+}
+
+h1{
+    margin:0 0 20px 0;
+    font-size: 56px;
+    word-spacing: 2px;
+}
+
+abbr{
+    cursor: help;
+    font-size: 130%;
+    Color: #ff2166;
+    border-width: 1px;
+    border-color: #888;
+    border-bottom: thin dashed;
+}
+
+p{
+    font-size: 30px;
+    line-height: 50px;
+    margin: 0;
+    width: auto;
+}
