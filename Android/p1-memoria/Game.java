@@ -1,4 +1,4 @@
-package carrera.v.button1;
+package com.example.vcarrre.gamebutton1;
 
 import android.util.Log;
 
@@ -16,8 +16,8 @@ public class Game {
         Log.d(TAG, "Create");
         memo = -1;
         this.nbut = nbut;
-        remaining = nbut / 2;
-        arraytwin = twingenerator(nbut);
+        remaining = this.nbut / 2;
+        arraytwin = twingenerator(this.nbut);
         shuffle(arraytwin);
     }
 
