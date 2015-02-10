@@ -1,32 +1,30 @@
-package carrera.v.button1;
+package com.example.vcarrre.gamebutton1;
 
 import java.util.ArrayList;
 import java.util.Collections;
 
 public class Data {
     static final String PHRASAL_VERB = "easter egg";
-    static final String EASY = "Facil 2x2";
-    static final String AVERAGE = "Medio 3x4";
-    static final String HARD = "Dificil 4x10";
     static final String WIN = "Total de movimientos: ";
     static final String OTHER_MOV = "pulse siguiente intento";
     static final String TWIN = "pareja encontrada";
-    static final String B_TRY_AGAIN = "Siguiente Intento";
     static final String B_OTHER_GAME = "¿Jugar de nuevo?";
     static final String B_TRANSLATE = "Traducir";
     static final String B_START = "Comenzar";
-
-    static final String ColorHexButtongame = "#FF0000";
-    static final String ColorHexButtonTryagain = "#0000FF";
+    static final String ColorHexButtonBack = "#FF0000";
+    static final String ColorHexButtonTranslateOn = "#0000FF";
+    static final String ColorHexButtonTranslateOff = "#888888";
     static final String ColorHexButtonTwin = "#00FF00";
     static final String ColorHexButtonSearching = "#FFA500";
-
     static int COLUMN_EASY = 2;
-    static int ROW_EASY = 2;
+    static int ROW_EASY = 3;
+    static final String EASY = "Facil " + COLUMN_EASY + " x " + ROW_EASY;
     static int COLUMN_AVERAGE = 3;
     static int ROW_AVERAGE = 4;
+    static final String AVERAGE = "Medio " + COLUMN_AVERAGE + " x " + ROW_AVERAGE;
     static int COLUMN_HARD = 4;
     static int ROW_HARD = 10;
+    static final String HARD = "Dificil " + COLUMN_HARD + " x " + ROW_HARD;
     ArrayList<Phrasal_verbs> phrasal_list;
 
     public Data() {
@@ -55,6 +53,7 @@ public class Data {
     }
 
     enum Difficult {
+        none,
         easy,
         average,
         hard
