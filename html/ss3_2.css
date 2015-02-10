@@ -11,6 +11,7 @@ body{background-color:blue;}
     z-index: 2;
     color: black;
     font-size:16px;
+    border-radius:15px;
 }
 
 h1{
@@ -24,8 +25,8 @@ abbr{
     font-size: 130%;
     Color: #ff2166;
     border-width: 1px;
-    border-color: #888;
-    border-bottom: thin dashed;
+    /*border-color: #888;*/
+    border-bottom: thin dashed #888;
 }
 
 p{

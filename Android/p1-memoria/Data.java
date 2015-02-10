@@ -1,28 +1,24 @@
 package carrera.v.button1;
 
-
 import java.util.ArrayList;
+import java.util.Collections;
 
 public class Data {
-    static final String PHRASAL_VERB="easter egg";
-
-    static final String EASY = "Facil      2x2";
-    static final String AVERAGE = "Medio      3x4";
-    static final String HARD = "Dificil    4x10";
-
+    static final String PHRASAL_VERB = "easter egg";
+    static final String EASY = "Facil 2x2";
+    static final String AVERAGE = "Medio 3x4";
+    static final String HARD = "Dificil 4x10";
     static final String WIN = "Total de movimientos: ";
     static final String OTHER_MOV = "pulse siguiente intento";
     static final String TWIN = "pareja encontrada";
-
     static final String B_TRY_AGAIN = "Siguiente Intento";
     static final String B_OTHER_GAME = "¿Jugar de nuevo?";
     static final String B_TRANSLATE = "Traducir";
-
     static final String B_START = "Comenzar";
 
-    static final String ColorHexButtongame = "#DA358A";
-    static final String ColorHexButtonTryagain = "#0F0FE5";
-    static final String ColorHexButtonTwin = "#059F1C";
+    static final String ColorHexButtongame = "#FF0000";
+    static final String ColorHexButtonTryagain = "#0000FF";
+    static final String ColorHexButtonTwin = "#00FF00";
     static final String ColorHexButtonSearching = "#FFA500";
 
     static int COLUMN_EASY = 2;
@@ -40,24 +36,22 @@ public class Data {
         phrasal_list.add(new Phrasal_verbs("Find out", "discover", "descubrir"));
         phrasal_list.add(new Phrasal_verbs("Get over", "recover", "recuperarse"));
         phrasal_list.add(new Phrasal_verbs("Go ahead", "proceed", "adelante"));
-
         phrasal_list.add(new Phrasal_verbs("Hang on", "keep", "guardar"));
         phrasal_list.add(new Phrasal_verbs("Hang out", "meet friends", "quedar"));
         phrasal_list.add(new Phrasal_verbs("Pick up", "get", "coger"));
         phrasal_list.add(new Phrasal_verbs("Drop off", "leave", "soltar"));
         phrasal_list.add(new Phrasal_verbs("Put on", "dress", "vestirse"));
-
         phrasal_list.add(new Phrasal_verbs("Take off", "strip", "desnudarse"));
         phrasal_list.add(new Phrasal_verbs("Turn on", "connect", "encender"));
         phrasal_list.add(new Phrasal_verbs("Turn off", "disconnect", "apagar"));
         phrasal_list.add(new Phrasal_verbs("Turn up", "appear", "presentarse"));
         phrasal_list.add(new Phrasal_verbs("Turn down", "refuse", "rechazar"));
-
         phrasal_list.add(new Phrasal_verbs("Take off", "start flying", "despegar"));
         phrasal_list.add(new Phrasal_verbs("Stay away", "avoid", "alejarse"));
         phrasal_list.add(new Phrasal_verbs("Get over", "recover", "recuperarse"));
         phrasal_list.add(new Phrasal_verbs("Make up", "reconcile", "reconciliarse"));
         phrasal_list.add(new Phrasal_verbs("Put up", "tolerate", "tolerar"));
+        Collections.shuffle(this.phrasal_list);
     }
 
     enum Difficult {

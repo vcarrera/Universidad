@@ -2,15 +2,20 @@ body{background-color:blue;}
 #sandbox{
     font-family: "goudy-bookletter-1911-1", "goudy-bookletter-1911-2", "Bas-kerville", "Georgia", serif;
     border-style: solid;
-    border-width: 1px;
-    border-color: #211111;
+    border-width: 5px;
+    border-color: rgba(#21,#11,11,0.2);
     overflow:hidden;
     margin:40px 0 0 30px;
     padding: 20px;
     Width: 440px;
     z-index: 2;
-    color: black;
+    color: rgba(0,0,0,0.6);
     font-size:16px;
+    border-radius:15px;
+    text-shadow: 0 0 1px #333;
+    box-shadow: 0 0 20px #FFF;
+    background: linear-gradient(#444444,#999999);
+    transform: rotate(7.5deg)scale(0.8);
 }
 
 h1{
@@ -24,13 +29,8 @@ abbr{
     font-size: 130%;
     Color: #ff2166;
     border-width: 1px;
-<<<<<<< HEAD
     /*border-color: #888;*/
     border-bottom: thin dashed #888;
-=======
-    border-color: #888;
-    border-bottom: thin dashed;
->>>>>>> 32ad8fe5c7cb721a93831366d795d05fb44ed0ab
 }
 
 p{
@@ -38,8 +38,4 @@ p{
     line-height: 50px;
     margin: 0;
     width: auto;
-<<<<<<< HEAD
 }
-=======
-}
->>>>>>> 32ad8fe5c7cb721a93831366d795d05fb44ed0ab

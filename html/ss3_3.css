@@ -11,6 +11,8 @@ body{background-color:blue;}
     z-index: 2;
     color: black;
     font-size:16px;
+    border-radius:15px;
+    text-shadow: 0 0 1px #333;
 }
 
 h1{
@@ -24,13 +26,8 @@ abbr{
     font-size: 130%;
     Color: #ff2166;
     border-width: 1px;
-<<<<<<< HEAD
     /*border-color: #888;*/
     border-bottom: thin dashed #888;
-=======
-    border-color: #888;
-    border-bottom: thin dashed;
->>>>>>> 32ad8fe5c7cb721a93831366d795d05fb44ed0ab
 }
 
 p{
@@ -38,8 +35,4 @@ p{
     line-height: 50px;
     margin: 0;
     width: auto;
-<<<<<<< HEAD
 }
-=======
-}
->>>>>>> 32ad8fe5c7cb721a93831366d795d05fb44ed0ab

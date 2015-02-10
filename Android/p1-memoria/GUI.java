@@ -3,10 +3,10 @@ package carrera.v.button1;
 import android.app.Activity;
 import android.graphics.Color;
 import android.graphics.PorterDuff;
+import android.graphics.drawable.Drawable;
 import android.util.Log;
 import android.view.Gravity;
 import android.view.View;
-import android.view.accessibility.AccessibilityEvent;
 import android.widget.Button;
 import android.widget.CheckBox;
 import android.widget.RadioButton;
@@ -15,10 +15,10 @@ import android.widget.TableLayout;
 import android.widget.TableRow;
 import android.widget.Toast;
 
-import java.util.Random;
-
 public class GUI {
     private static final String TAG = "gui";
+    private int MATCH_PARENT = TableLayout.LayoutParams.MATCH_PARENT;
+    private int WRAP_CONTENT = TableLayout.LayoutParams.WRAP_CONTENT;
     private int column = Data.COLUMN_AVERAGE;
     private int row = Data.ROW_AVERAGE;
     private int nbut = column * row;
@@ -31,8 +31,9 @@ public class GUI {
     private boolean endgame = false;
     private boolean phrasal = false;
     private Data d;
-    //final MediaPlayer mp = MediaPlayer.create(this, R.raw.sound);
+    private Drawable draw;
 
+    //final MediaPlayer mp = MediaPlayer.create(this, R.raw.sound);
     public GUI(Activity a) {
         this.a = a;
         Log.d(TAG, "gui-game");
@@ -54,18 +55,14 @@ public class GUI {
         radiobut.setOnClickListener(new Selector());
         rg.addView(radiobut);
     }
-   private class checkcontrol implements View.OnClickListener {
-       @Override
-       public void onClick(View v) {
-           phrasal=!phrasal;
-       }
-   }
+
     public void guiMenu() {
+        phrasal = false;
         Log.d(TAG, "guiMenu1");
-        TableLayout.LayoutParams tableParams = new TableLayout.LayoutParams(TableLayout.LayoutParams.MATCH_PARENT, TableLayout.LayoutParams.WRAP_CONTENT);
+        TableLayout.LayoutParams tableParams = new TableLayout.LayoutParams(MATCH_PARENT,WRAP_CONTENT );
         TableLayout tableLayout = new TableLayout(a);
         tableLayout.setLayoutParams(tableParams);
-        CheckBox cb=new CheckBox(a);
+        CheckBox cb = new CheckBox(a);
         cb.setText(Data.PHRASAL_VERB);
         cb.setOnClickListener(new checkcontrol());
         tableLayout.addView(cb);
@@ -75,7 +72,7 @@ public class GUI {
         addradiobut(rg, Data.Difficult.hard, Data.HARD, false);
         tableLayout.addView(rg);
         Log.d(TAG, "guiMenu2");
-        TableRow.LayoutParams especialParams = new TableRow.LayoutParams(TableRow.LayoutParams.MATCH_PARENT, TableRow.LayoutParams.MATCH_PARENT, 1.0f);
+        TableRow.LayoutParams especialParams = new TableRow.LayoutParams(MATCH_PARENT, MATCH_PARENT, 1.0f);
         TableRow tableRow = new TableRow(a);
         tableRow.setLayoutParams(especialParams);
         Button buttonstart = new Button(a);
@@ -83,7 +80,8 @@ public class GUI {
         buttonstart.setText(Data.B_START);
         buttonstart.setOnClickListener(new Start());
         buttonstart.setGravity(Gravity.CENTER);
-        buttonstart.getBackground().setColorFilter(Color.parseColor(Data.ColorHexButtonTryagain), PorterDuff.Mode.MULTIPLY);
+        draw=buttonstart.getBackground();
+        draw.setColorFilter(Color.parseColor(Data.ColorHexButtonTryagain), PorterDuff.Mode.MULTIPLY);
         Log.d(TAG, "guiMenu3");
         tableRow.addView(buttonstart);
         tableLayout.addView(tableRow);
@@ -92,9 +90,9 @@ public class GUI {
 
     public void guiGame() {
         Log.d(TAG, "guigame1");
-        TableLayout.LayoutParams tableParams = new TableLayout.LayoutParams(TableLayout.LayoutParams.MATCH_PARENT, TableLayout.LayoutParams.WRAP_CONTENT);
-        TableLayout.LayoutParams rowParams = new TableLayout.LayoutParams(TableLayout.LayoutParams.MATCH_PARENT, TableLayout.LayoutParams.MATCH_PARENT, 1.0f);
-        TableRow.LayoutParams butParams = new TableRow.LayoutParams(TableRow.LayoutParams.MATCH_PARENT, TableRow.LayoutParams.MATCH_PARENT, 1.0f);
+        TableLayout.LayoutParams tableParams = new TableLayout.LayoutParams(MATCH_PARENT, MATCH_PARENT);
+        TableLayout.LayoutParams rowParams = new TableLayout.LayoutParams(MATCH_PARENT, MATCH_PARENT, 1.0f);
+        TableRow.LayoutParams butParams = new TableRow.LayoutParams(MATCH_PARENT, MATCH_PARENT, 1.0f);
         TableLayout tableLayout = new TableLayout(a);
         tableLayout.setLayoutParams(tableParams);
         int i, j;
@@ -109,13 +107,14 @@ public class GUI {
                 but.setLayoutParams(butParams);
                 Log.d(TAG, "k value " + k);
                 but.setOnClickListener(new Infobut(k++, but));
-                but.getBackground().setColorFilter(Color.parseColor(Data.ColorHexButtongame), PorterDuff.Mode.MULTIPLY);
+                draw=but.getBackground();
+                draw.setColorFilter(Color.parseColor(Data.ColorHexButtongame), PorterDuff.Mode.MULTIPLY);
                 tableRow.addView(but);
             }
             tableLayout.addView(tableRow);
         }
         Log.d(TAG, "guigame3");
-        TableRow.LayoutParams especialParams = new TableRow.LayoutParams(TableRow.LayoutParams.MATCH_PARENT, TableRow.LayoutParams.MATCH_PARENT, 1.0f);
+        TableRow.LayoutParams especialParams = new TableRow.LayoutParams(MATCH_PARENT, MATCH_PARENT, 1.0f);
         TableRow tableRow = new TableRow(a);
         tableRow.setLayoutParams(rowParams);
         especialParams.span = column;
@@ -124,7 +123,8 @@ public class GUI {
         buttonagain.setText(Data.B_TRY_AGAIN);
         buttonagain.setOnClickListener(new Tryagain());
         buttonagain.setGravity(Gravity.CENTER);
-        buttonagain.getBackground().setColorFilter(Color.parseColor(Data.ColorHexButtonTryagain), PorterDuff.Mode.MULTIPLY);
+        draw=buttonagain.getBackground();
+        draw.setColorFilter(Color.parseColor(Data.ColorHexButtonTryagain), PorterDuff.Mode.MULTIPLY);
         buttonagain.setAlpha(0);
         Log.d(TAG, "guigame4");
         tableRow.addView(buttonagain);
@@ -133,29 +133,39 @@ public class GUI {
         Log.d(TAG, "guigame5");
         if (phrasal) {
             d = new Data();
-            while (d.phrasal_list.size() > nbut) {
-                d.phrasal_list.remove(new Random().nextInt(d.phrasal_list.size() - 1));
-            }
         }
         this.g = new Game(nbut);
     }
 
+    private void turnfaill() {
+        if (!(memBut2 == null)) {
+            memBut1.button.setText("");
+            draw=memBut1.button.getBackground();
+            draw.setColorFilter(Color.parseColor(Data.ColorHexButtongame), PorterDuff.Mode.MULTIPLY);
+            memBut2.button.setText("");
+            draw=memBut2.button.getBackground();
+            draw.setColorFilter(Color.parseColor(Data.ColorHexButtongame), PorterDuff.Mode.MULTIPLY);
+            memBut2 = null;
+        } else if (endgame) {
+            //mp.stop();
+            guiMenu();
+            endgame = false;
+        } else {
+            texttoast(d.phrasal_list.get(g.getValue(memBut1.id)).t);
+        }
+        buttonagain.setAlpha(0);
+    }
+
+    private class checkcontrol implements View.OnClickListener {
+        @Override
+        public void onClick(View v) {
+            phrasal = !phrasal;
+        }
+    }
+
     private class Tryagain implements View.OnClickListener {
         public void onClick(View button) {
-            if (!(memBut2 == null)) {
-                memBut1.button.setText("");
-                memBut1.button.getBackground().setColorFilter(Color.parseColor(Data.ColorHexButtongame), PorterDuff.Mode.MULTIPLY);
-                memBut2.button.setText("");
-                memBut2.button.getBackground().setColorFilter(Color.parseColor(Data.ColorHexButtongame), PorterDuff.Mode.MULTIPLY);
-                memBut2 = null;
-            } else if (endgame) {
-                //mp.stop();
-                guiMenu();
-                endgame = false;
-            } else {
-                texttoast(d.phrasal_list.get(g.getValue(memBut1.id)).t);
-            }
-            buttonagain.setAlpha(0);
+            turnfaill();
         }
     }
 
@@ -201,13 +211,13 @@ public class GUI {
             return id;
         }
 
-
         public void onClick(View button) {
             int time;
             Toast msg;
             Integer id = this.getId();
             Log.d(TAG, "id " + id);
             if (!(memBut2 == null)) {
+                turnfaill();
                 return;
             }
             if (phrasal) {
@@ -260,5 +270,4 @@ public class GUI {
             }
         }
     }
-
 }
